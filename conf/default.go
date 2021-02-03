@@ -14,15 +14,48 @@ var (
 )
 
 func DefaultInit() {
-	initLogRus()
-	CnfInit()
+	err := initLogRus()
+	if err != nil {
+		return
+	}
+	cnfInit()
+	dbInit()
+	alarmInit()
+	smsInit()
+	wxInit()
+	redisInit()
+	jwtInit()
+}
+
+func jwtInit() {
+	//jwt鉴权配置
+}
+
+func redisInit() {
+	//redis配置
+}
+
+func wxInit() {
+	//企业微信配置
+}
+
+func smsInit() {
+	//短信配置
+}
+
+func alarmInit() {
+	//告警配置，邮件
+}
+
+func dbInit() {
+	//database connect config
 }
 
 var Logger = logrus.New()
 
 func initLogRus() (err error) { // 初始化log的函数
-	Logger.Formatter = &logrus.JSONFormatter{}                                    // 设置为json格式的日志
-	f, err := os.OpenFile("./zdc.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644) // 创建一个log日志文件
+	Logger.Formatter = &logrus.JSONFormatter{}                                      // 设置为json格式的日志
+	f, err := os.OpenFile("./ig570.log", os.O_CREATE|os.O_WRONLY|os.O_APPEND, 0644) // 创建一个log日志文件
 	if err != nil {
 		return
 	}
@@ -36,7 +69,7 @@ func initLogRus() (err error) { // 初始化log的函数
 	return
 }
 
-func CnfInit() {
+func cnfInit() {
 	cf := &Conf{
 		Url570: "www.baidu.com",
 	}
