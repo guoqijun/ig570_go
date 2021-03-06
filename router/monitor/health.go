@@ -20,5 +20,4 @@ func NewHealth() Health {
 func (ret *Monitor) Health(ctx *gin.Context) {
 	appG := common.Gin{C: ctx}
 	appG.Response(http.StatusOK, 0, nil)
-	return
 }
