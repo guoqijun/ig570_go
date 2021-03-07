@@ -1,38 +1,29 @@
 package base
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
 	"ig570_go/common"
-	"ig570_go/conf"
-	"io/ioutil"
+	"ig570_go/ig570"
 	"net/http"
-	"net/url"
 )
 
 func GetCompany(ctx *gin.Context) {
 	appG := common.Gin{C: ctx}
+	resp, _ := ig570.GetCompanyList()
+	appG.Response(http.StatusOK, 0, resp)
+	return
+}
 
-	getCompanyUrl := conf.ApiUrlCf.BaseGplist
-	fmt.Print(getCompanyUrl)
+func GetCompanyInfo(ctx *gin.Context) {
+	appG := common.Gin{C: ctx}
+	code := ctx.DefaultQuery("code", "")
 
-	params := url.Values{}
-	Url, err := url.Parse(getCompanyUrl)
-	if err != nil {
+	if len(code) == 0 {
+		appG.Response(http.StatusOK, -1, nil)
 		return
 	}
-	params.Set("licence", conf.ApiUrlCf.Licence)
-	Url.RawQuery = params.Encode()
-	urlPath := Url.String()
 
-	fmt.Println(urlPath)
-
-	resp, err := http.Get(urlPath)
-	defer resp.Body.Close()
-
-	body, _ := ioutil.ReadAll(resp.Body)
-	fmt.Println(string(body))
-
-	appG.Response(http.StatusOK, 0, string(body))
+	resp, _ := ig570.GetCompanyInfo(code)
+	appG.Response(http.StatusOK, 0, resp)
 	return
 }

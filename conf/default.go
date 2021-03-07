@@ -9,9 +9,8 @@ import (
 )
 
 var (
-	Cnf      *Conf
-	Env      string
-	ApiUrlCf *ApiUrl
+	Cnf *Conf
+	Env string
 )
 
 func DefaultInit() {
@@ -20,23 +19,12 @@ func DefaultInit() {
 		return
 	}
 	cnfInit()
-	apiInit()
 	dbInit()
 	alarmInit()
 	smsInit()
 	wxInit()
 	redisInit()
 	jwtInit()
-}
-
-func apiInit() {
-	cf := &ApiUrl{
-		Licence:    "FE4F0EFE-8015-7611-3666-3E707CE8E2D2",
-		BaseGplist: "http://ig507.com/data/base/gplist",
-	}
-
-	ApiUrlCf = cf
-	return
 }
 
 func jwtInit() {
@@ -83,7 +71,7 @@ func initLogRus() (err error) { // 初始化log的函数
 
 func cnfInit() {
 	cf := &Conf{
-		Url570: "www.baidu.com",
+		Licence: "www.baidu.com",
 	}
 
 	files, _ := filepath.Glob("./env.*.yaml")

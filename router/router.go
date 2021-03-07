@@ -22,6 +22,7 @@ func RoutersInit() *gin.Engine {
 
 	baseFunc := r.Group("/base")
 	baseFunc.GET("/company", base.GetCompany)
+	baseFunc.GET("/company-info", base.GetCompanyInfo)
 
 	return r
 }
