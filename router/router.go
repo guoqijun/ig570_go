@@ -21,8 +21,17 @@ func RoutersInit() *gin.Engine {
 	monitorRoute.GET("/", MonitorHealth.Health)
 
 	baseFunc := r.Group("/base")
+
 	baseFunc.GET("/company", base.GetCompany)
 	baseFunc.GET("/company-info", base.GetCompanyInfo)
+	baseFunc.GET("/company-share", base.GetCompanyShare)
+
+	baseFunc.GET("/company-additional", base.GetCompanyAdditional)
+	baseFunc.GET("/company-finance-digest", base.GetCompanyFinanceDigest)
+	baseFunc.GET("/company-profit", base.GetCompanyProfit)
+	baseFunc.GET("/company-cash-flow", base.GetCompanyCashFlow)
+	baseFunc.GET("/company-performance", base.GetCompanyPerformance)
+	baseFunc.GET("/company-finance-index", base.GetCompanyFinanceIndex)
 
 	return r
 }
