@@ -15,7 +15,7 @@ func RoutersInit() *gin.Engine {
 	}
 	r := gin.New()
 
-	MonitorHealth := Health.NewHealth()
+	MonitorHealth := Health.NewMonitor()
 
 	monitorRoute := r.Group("/health")
 	monitorRoute.GET("/", MonitorHealth.Health)

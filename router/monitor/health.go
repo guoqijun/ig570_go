@@ -9,15 +9,15 @@ import (
 type Monitor struct {
 }
 
-type Health interface {
+type IMonitor interface {
 	Health(*gin.Context)
 }
 
-func NewHealth() Health {
+func NewMonitor() IMonitor {
 	return &Monitor{}
 }
 
 func (ret *Monitor) Health(ctx *gin.Context) {
 	appG := common.Gin{C: ctx}
-	appG.Response(http.StatusOK, 0, nil)
+	appG.Response(http.StatusOK, 0, "i am health")
 }
