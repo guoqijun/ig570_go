@@ -11,3 +11,6 @@ after run and request
 - http://localhost:8081/base/company-cash-flow?code=000001
 - http://localhost:8081/base/company-performance?code=000001
 - http://localhost:8081/base/company-finance-index?code=000001
+
+- http://localhost:8081/base/company-qfq-factor?code=000001
+- http://localhost:8081/base/company-hfq-factor?code=000001

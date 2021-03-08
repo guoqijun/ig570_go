@@ -109,3 +109,27 @@ func GetCompanyFinanceIndex(ctx *gin.Context) {
 	appG.Response(http.StatusOK, 0, resp)
 	return
 }
+
+func GetCompanyQfqFactor(ctx *gin.Context) {
+	appG := common.Gin{C: ctx}
+	code := ctx.DefaultQuery("code", "")
+	if len(code) == 0 {
+		appG.Response(http.StatusOK, -1, nil)
+		return
+	}
+	resp, _ := ig570.GetCompanyQfqFactor(code)
+	appG.Response(http.StatusOK, 0, resp)
+	return
+}
+
+func GetCompanyHfqFactor(ctx *gin.Context) {
+	appG := common.Gin{C: ctx}
+	code := ctx.DefaultQuery("code", "")
+	if len(code) == 0 {
+		appG.Response(http.StatusOK, -1, nil)
+		return
+	}
+	resp, _ := ig570.GetCompanyHfqFactor(code)
+	appG.Response(http.StatusOK, 0, resp)
+	return
+}

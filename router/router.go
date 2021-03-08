@@ -32,6 +32,14 @@ func RoutersInit() *gin.Engine {
 	baseFunc.GET("/company-cash-flow", base.GetCompanyCashFlow)
 	baseFunc.GET("/company-performance", base.GetCompanyPerformance)
 	baseFunc.GET("/company-finance-index", base.GetCompanyFinanceIndex)
+	baseFunc.GET("/company-qfq-factor", base.GetCompanyQfqFactor)
+	baseFunc.GET("/company-hfq-factor", base.GetCompanyHfqFactor)
+
+	baseFunc.GET("/real", base.GetTimeReal)
+	baseFunc.GET("/real-level-5", base.GetTimeRealLevel5)
+	baseFunc.GET("/real-one-by-one", base.GetTimeRealOneByOne)
+	baseFunc.GET("/real-time-deal", base.GetTimeRealTimeDeal)
+	baseFunc.GET("/real-big-deal", base.GetTimeRealBigDeal)
 
 	return r
 }
