@@ -41,5 +41,17 @@ func RoutersInit() *gin.Engine {
 	baseFunc.GET("/real-time-deal", base.GetTimeRealTimeDeal)
 	baseFunc.GET("/real-big-deal", base.GetTimeRealBigDeal)
 
+	baseFunc.GET("/time-real-level", base.GetTimeRealLevel)
+	baseFunc.GET("/time-kdj", base.GetTimeRealKdj)
+	baseFunc.GET("/time-macd", base.GetTimeRealMacd)
+	baseFunc.GET("/time-ma", base.GetTimeRealMa)
+	baseFunc.GET("/time-boll", base.GetTimeRealBoll)
+
+	baseFunc.GET("/history-trade", base.GetTimeHistoryTrade)
+	baseFunc.GET("/history-kdj", base.GetTimeHistoryKdj)
+	baseFunc.GET("/history-macd", base.GetTimeHistoryMacd)
+	baseFunc.GET("/history-ma", base.GetTimeHistoryMa)
+	baseFunc.GET("/history-boll", base.GetTimeHistoryBoll)
+
 	return r
 }
